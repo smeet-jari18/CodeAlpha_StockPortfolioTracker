@@ -12,100 +12,88 @@ prices.
 
 '''
 
-
 stock_price = {
-    "AAPL": 180,
-    "TSLA": 250,
-    "TCS": 450,
-    "GOOGL": 150,
-    "MSFT": 400,
-    "AMZN": 190
+    "AAPL" : 180,
+    "TSLA" : 250,
+    "TCS"  : 450,
+    "GOOL" : 150,
+    "MSFT" : 400,
+    "AMZN" : 190
 }
 
-Portfolio = []
+portfolio = []
 
-total_investment = 0
+total_inverstment = 0
 
 print("=========================================")
 print("         Stock Portfolio Tracker         ")
 print("=========================================")
 
-print("\nAvailable Stocks:")
+print("\nAvailable Stock : ")
 
-for stock, price in stock_price.items():
-    print(stock, ":", price)
+for stock,price in stock_price.items():
+    print(stock , ": " ,price)
 
-print("\nType 'done' when you finish.")
+print("\n'DONE' when you finish.")
 
 while True:
 
-    stock_name = input("\nEnter stock name: ").upper().strip()
+    stock_name = input("\nEnter Stock name :- ").upper().strip()
 
-    
     if stock_name == "DONE":
         break
 
-    
     if stock_name not in stock_price:
-        print("That stock is not available. Please try again.")
+        print("\nThis Stock is not avaliable. please try again.")
         continue
 
-    
     try:
-        quantity = int(input("Enter quantity: "))
+        quantity = int(input("\nEnter quantity : "))
 
         if quantity <= 0:
-            print("Quantity must be greater than zero.")
+            print("quantity must be greater than zero.")
             continue
-
     except ValueError:
-        print("Please enter a valid number.")
+        print("\nEnter valid value :- ")
         continue
 
-    
     price = stock_price[stock_name]
 
     investment = price * quantity
 
-    total_investment += investment
+    total_inverstment = total_inverstment + investment
 
-    
-    Portfolio.append(
-        (stock_name, price, quantity, investment)
-    )
-
-    print("\nInvestment added successfully!")
-
-    
-    print("\n============= Your Portfolio =============")
-
-    for stock_name, price, quantity, investment in Portfolio:
-        print(
-            stock_name,
-            "| Price:", price,
-            "| Quantity:", quantity,
-            "| Value:", investment
+    portfolio.append(
+        stock , price , quantity , investment 
         )
 
+    print("\ninvestment added successfully! ")
 
-print("\nTotal Investment:", total_investment)
+    print("\n============================== your portfolio ==============================")
 
+    for stock , price , quantity , investment in portfolio:
+        print (
+            stock,
+            "| price : "     , price,
+            "| quantity : " , quantity,
+            "| value :"      , investment
+        )        
 
-with open("portfolio.txt", "w") as file:
+    print("\nTotal inverstment : " ,total_inverstment)
 
-    file.write("       Stock Portfolio Report\n")
-    file.write("====================================\n")
+with open("Portfolio.txt" , "w") as file:
+    file.write("        Stock portfolio report        \n")
+    file.write("========================================")
 
-    for stock_name, price, quantity, investment in Portfolio:
+    for stock, price, quantity, investment in portfolio:
+        file.write(
+            f"stock : {stock_name} | price : {price}"
+            f"quantity : {quantity} | value : {investment}\n" 
+        )
 
         file.write(
-            f"{stock_name} | Price: {price} | "
-            f"Quantity: {quantity} | Value: {investment}\n"
+            f"Total Inverstment : {total_inverstment}\n"
         )
 
-    file.write(
-        f"\nTotal Investment: {total_investment}\n"
-    )
-
-print("\nPortfolio saved in portfolio.txt")
-print("Thank you for using Stock Portfolio Tracker!")
+    print("\nsave 'portfolio.txt' file successfully.")
+    print("Thank you for using Stock portfolio tracker!")
