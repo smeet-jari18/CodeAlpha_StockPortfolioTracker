@@ -64,7 +64,7 @@ while True:
     total_inverstment = total_inverstment + investment
 
     portfolio.append(
-        stock , price , quantity , investment 
+        (stock , price , quantity , investment)
         )
 
     print("\ninvestment added successfully! ")
