@@ -16,7 +16,7 @@ stock_price = {
     "AAPL" : 180,
     "TSLA" : 250,
     "TCS"  : 450,
-    "GOOL" : 150,
+    "GOOGL": 150,
     "MSFT" : 400,
     "AMZN" : 190
 }
@@ -32,7 +32,7 @@ print("=========================================")
 print("\nAvailable Stock : ")
 
 for stock,price in stock_price.items():
-    print(stock , ": " ,price)
+    print(stock , ":" ,price)
 
 print("\n'DONE' when you finish.")
 
@@ -64,7 +64,7 @@ while True:
     total_inverstment = total_inverstment + investment
 
     portfolio.append(
-        (stock , price , quantity , investment)
+        (stock_name , price , quantity , investment)
         )
 
     print("\ninvestment added successfully! ")
@@ -82,18 +82,18 @@ while True:
     print("\nTotal inverstment : " ,total_inverstment)
 
 with open("Portfolio.txt" , "w") as file:
-    file.write("        Stock portfolio report        \n")
-    file.write("========================================")
+    file.write("                Stock portfolio report                         \n")
+    file.write("===============================================================\n")
 
     for stock, price, quantity, investment in portfolio:
         file.write(
-            f"stock : {stock_name} | price : {price}"
+            f"stock : {stock} | price : {price} | "
             f"quantity : {quantity} | value : {investment}\n" 
         )
 
-        file.write(
-            f"Total Inverstment : {total_inverstment}\n"
-        )
+    file.write(
+        f"\nTotal Inverstment : {total_inverstment}"
+    )
 
-    print("\nsave 'portfolio.txt' file successfully.")
+    print("\nsave 'Portfolio.txt' file successfully.")
     print("Thank you for using Stock portfolio tracker!")
